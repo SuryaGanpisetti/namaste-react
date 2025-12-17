@@ -1,0 +1,30 @@
+{
+  "name": "namste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Surya Ganpisetti",
+  "keywords": [],
+  "homepage": "https://github.com/SuryaGanpisetti/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/SuryaGanpisetti/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuryaGanpisetti/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Surya Ganpisetti",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "browseslist": {
+    "Last 2 versions"
+  }
+}
