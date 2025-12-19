@@ -54,7 +54,7 @@ const restaruntList = [
     },
     {
         id: "22",
-        name: "Shadab"
+        name: "Shadab Hotel"
     },
      {
         id: "33",
@@ -107,19 +107,18 @@ const RestaurantListCompnent = (props) =>{
         </div>
     );
 };
-const RestaruntCardCompnent = () =>{
-    // console.log(props);
+const RestaruntCardCompnent = (props) =>{
+    console.log(props);
     
-    // const {resMenuData} = props
+    const {resMenuData} = props
     return(
-        // <div className="res-card" style={styleCard}>
-        //     <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/6d8627d8366cf0a4f0fc7acd01166ee9"/>
-        //     <h3>{resMenuData.resName}</h3>
-        //     <h4>{resMenuData.cuisine}</h4>
-        //     <h4>{resMenuData.rating}</h4>
-        //     <h4>{"$"+resMenuData.costForTwo + "For Two"}</h4>
-        // </div>
-        <h2>Food Menu</h2>
+            <div className="res-card" style={styleCard}>
+            <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/6d8627d8366cf0a4f0fc7acd01166ee9"/>
+            <h3>{resMenuData?.resName}</h3>
+            <h4>{resMenuData?.cuisine}</h4>
+            <h4>{resMenuData?.rating}</h4>
+            <h4>{"$"+resMenuData?.costForTwo + "For Two"}</h4>
+        </div>
     );
 };
 const AppBody = () =>{
@@ -129,7 +128,9 @@ const AppBody = () =>{
                 {
                     restaruntList.map((restarunt)=>(
                         <RestaurantListCompnent key = {restarunt.id} resData = {restarunt}>
-                          {RestaruntCardCompnent()}
+                            {restaruntMenu.map((restaruntMenuEle)=>(
+                                <RestaruntCardCompnent key = {restaruntMenuEle?.id} resMenuData = {restaruntMenuEle}/>
+                            ))}
                         </RestaurantListCompnent>
                     ))
                 }
