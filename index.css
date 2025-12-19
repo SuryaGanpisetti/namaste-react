@@ -7,3 +7,39 @@
 .titleElement{
     color: green;
 }
+.ptag{
+    color: burlywood;
+}
+.header {
+  display: flex;
+  justify-content: space-between; /* logo left, icon right */
+  align-items: center;            /* vertical centering */
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.search {
+  flex: 1;                        /* take up middle space */
+  text-align: center;
+}
+
+.search input {
+  width: 60%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
