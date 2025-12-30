@@ -41,16 +41,14 @@ const AppBody = () => {
 
   const fetchApiData = async () => {
     try {
-    const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const response = await fetch("https://namastedev.com/api/v1/listRestaurants");
     const json = await response.json();
-    console.log("Assignment",json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-    setRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-    setFilteredRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-    } catch (error) {
-      await alert(error);
-    }
-
     
+    setRestaurantList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurant(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    } catch (error) {
+      console.error("Error fetching restaurants:", error);
+    }
   }
 return restaurantList.length === 0 ? (
         <AppShimmer />
@@ -65,7 +63,7 @@ return restaurantList.length === 0 ? (
         Toggle Name
       </button>
     </div>
-
+       <div className="filter">
       <div className="search">
         <input
           type="text"
@@ -88,6 +86,7 @@ return restaurantList.length === 0 ? (
         setFilteredRestaurant(topList);
       }}
       >Top Rated Restarunts</button>
+      </div>
       <div className="res-container">
         {filteredRestaurant.map((restarunt) => (
             <RestaruntCardCompnent key = {restarunt.info.id} resMenuData={restarunt} />

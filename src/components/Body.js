@@ -13,15 +13,14 @@ const Body = () =>{
 
     useEffect(()=>{
         fetchData();
-        console.log("UseEffect Called...!");   
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
         const json = await data.json();
-        //console.log('Restarunts',json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        setRestaruntList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+        setRestaruntList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
     //Conditional Rendering
@@ -36,8 +35,9 @@ const Body = () =>{
                      className="search-box"
                      value={searchText}
                      onChange={(e)=>{setSearchText(e.target.value)}}/>
-                    <button onClick={()=>{
-                        console.log(searchText);
+                    <button 
+                    className="filter-btn"
+                    onClick={()=>{
                         const filteredRestaurantList = restaruntList.filter((res)=> res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase()))
                         setFilteredRestaurant(filteredRestaurantList);
                     }}>Search</button>
@@ -46,7 +46,6 @@ const Body = () =>{
                     const filteredList = restaruntList.filter(
                         (res) => res.info.avgRating > 4.6
                      );
-                     //console.log(filteredList);
                      setFilteredRestaurant(filteredList);
                 }} 
                 >Top Rated Restarunts</button>
