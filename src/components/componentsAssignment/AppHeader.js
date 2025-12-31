@@ -1,4 +1,4 @@
-import {LOGO_URL} from "../../utils/utilsAssignment/constantsAssigment";
+import { LOGO_URL } from "../../utils/utilsAssignment/constantsAssigment";
 import { useState } from "react";
 const AppHeader = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -6,11 +6,7 @@ const AppHeader = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img
-          className="logo"
-          alt="Food App Logo"
-          src={LOGO_URL}
-        />
+        <img className="logo" alt="Food App Logo" src={LOGO_URL} />
       </div>
       <div className="nav-items">
         <ul>
@@ -20,11 +16,13 @@ const AppHeader = () => {
           <li>My Orders</li>
           <li>Cart</li>
           <button
-           className="login" 
-           onClick={()=>{
-            btnName === "Login" ? setBtnName("Logout"): setBtnName("Login");
-           }}
-           >{btnName}</button>
+            className="login"
+            onClick={() => {
+              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
+            }}
+          >
+            {btnName}
+          </button>
         </ul>
       </div>
     </div>
