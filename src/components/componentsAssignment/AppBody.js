@@ -1,17 +1,7 @@
-/*
-  Play with the useEffect Hook to see when it is called?(before or after render) DONE
-● Play with dependency array in useEffect Hook DONE
-● Play with the developer console by putting a debugger in render and useEffect DONE
-● Call an actual API to get data DONE
-● Handle Error in your API call DONE
-● Build Shimmer UI when data in not loaded DONE
-● Render your UI with actual API data DONE
-● MakeSearch functionality work  DONE
-● MakeaLogin Logout button which toggles with a state DONE
-*/
 import RestaruntCardCompnent from "./RestaruntCardCompnent";
 import AppShimmer from "./../componentsAssignment/AppShimmer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AppBody = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -111,10 +101,12 @@ const AppBody = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restarunt) => (
-          <RestaruntCardCompnent
+          <Link
+            to={"/restaurants/" + restarunt.info.id}
             key={restarunt.info.id}
-            resMenuData={restarunt}
-          />
+          >
+            <RestaruntCardCompnent resMenuData={restarunt} />
+          </Link>
         ))}
       </div>
     </div>

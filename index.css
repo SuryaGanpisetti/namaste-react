@@ -80,3 +80,9 @@
 .filter {
     display: flex;
 }
+
+.nav-items>ul>li>a,
+.res-container>a {
+    color: white;  
+    text-decoration: none;
+}
