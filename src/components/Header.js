@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 
 export const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
-  console.log("Header Rendered");
+  //console.log("Header Rendered");
   // if no dependecy array useEffect() is called on every render
   // if dependecy array is empty => [], useEffect() is called only on initial render(only once)
   // if dependency array is [btnNameReact], useEffect() called everytime btnNameReact updates
   useEffect(() => {
-    console.log("useEffect called");
+    //console.log("useEffect called");
   }, []);
 
   return (

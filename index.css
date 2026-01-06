@@ -86,3 +86,8 @@
     color: white;  
     text-decoration: none;
 }
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
