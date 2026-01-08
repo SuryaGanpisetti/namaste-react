@@ -21,23 +21,23 @@ import { useEffect } from "react";
 // }
 
 const Contact = () => {
-    useEffect(()=>{
-        const time = setInterval(()=>{
-            console.log("useEffect Interval");   
-        },1000)
-        console.log("useEffect()");
-        return()=>{
-            clearInterval(time);
-            console.log("useEffect() return");  
-        }    
-    },[]);
-    console.log("Render");
-    
-    return (
-        <div>
-            <h1>Contact Us</h1>
-        </div>
-    )
-}
+  useEffect(() => {
+    const time = setInterval(() => {
+      console.log("useEffect Interval");
+    }, 1000);
+    console.log("useEffect()");
+    return () => {
+      clearInterval(time);
+      console.log("useEffect() return");
+    };
+  }, []);
+  console.log("Render");
+
+  return (
+    <div>
+      <h1>Contact Us</h1>
+    </div>
+  );
+};
 
 export default Contact;
