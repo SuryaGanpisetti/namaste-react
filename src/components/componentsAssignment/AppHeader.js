@@ -22,6 +22,9 @@ const AppHeader = () => {
           </li>
           <li>My Orders</li>
           <li>Cart</li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <button
             className="login"
             onClick={() => {

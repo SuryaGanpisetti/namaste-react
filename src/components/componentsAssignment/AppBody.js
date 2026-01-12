@@ -2,17 +2,12 @@ import RestaruntCardCompnent from "./RestaruntCardCompnent";
 import AppShimmer from "./../componentsAssignment/AppShimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useRestaurantListDetails from "../../utils/utilsAssignment/useRestaurantListDetails";
 
 const AppBody = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [count, setCount] = useState(0);
   const [name, setName] = useState("Surya");
-
-  useEffect(() => {
-    fetchApiData();
-  }, []);
 
   // Runs whenever 'count' changes
   useEffect(() => {
@@ -29,25 +24,8 @@ const AppBody = () => {
     console.log(`Count or Name changed → count: ${count}, name: ${name}`);
   }, [count, name]);
 
-  const fetchApiData = async () => {
-    try {
-      const response = await fetch(
-        "https://namastedev.com/api/v1/listRestaurants"
-      );
-      const json = await response.json();
-
-      setRestaurantList(
-        json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFilteredRestaurant(
-        json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
-      console.error("Error fetching restaurants:", error);
-    }
-  };
+  const { restaurantList, filteredRestaurant, setFilteredRestaurant } =
+    useRestaurantListDetails();
   return restaurantList.length === 0 ? (
     <AppShimmer />
   ) : (
