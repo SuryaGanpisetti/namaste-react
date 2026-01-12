@@ -2,33 +2,22 @@ import RestaruntCard from "./RestaruntCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
+//549000
 const Body = () => {
   // Local State Variable - super powerfull variable
-  const [restaruntList, setRestaruntList] = useState([]); //origina list from api
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]); //filtered list
+  // const [restaruntList, setRestaruntList] = useState([]); //original list from api
+  // const [filteredRestaurant, setFilteredRestaurant] = useState([]); //filtered list
   const [searchText, setSearchText] = useState("");
   // Normal JS Variable
   // let restaruntList = []/null;
+  const { restaruntList, filteredRestaurant, setFilteredRestaurant } =
+    useRestaurantList();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
-    const json = await data.json();
-
-    setRestaruntList(
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  };
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return `OPPS you're offline!!!check your internet connect`;
   //Conditional Rendering
   return restaruntList.length === 0 ? (
     <Shimmer />

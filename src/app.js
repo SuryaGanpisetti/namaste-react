@@ -6,6 +6,15 @@ import Error from "./components/Error";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantsMenu";
+// import Grocery from "./components/Grocery";
+import { lazy, Suspense } from "react";
+
+// Chunking
+// Code Spliting
+// Dynamic Bundling
+// Lazy loading
+// On demand loading
+// Dynamic importing
 
 const AppLayout = () => {
   return (
@@ -15,7 +24,7 @@ const AppLayout = () => {
     </div>
   );
 };
-
+const Grocery = lazy(() => import("./components/Grocery"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +42,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading.......</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
   },
