@@ -30,20 +30,27 @@ const AppBody = () => {
     <AppShimmer />
   ) : (
     <div className="body">
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Increase Count</button>
-
-        <p>Current name: {name}</p>
+      <div className="flex bg-cyan-100">
         <button
+          className="p-4 m-4 bg-black text-white font-bold rounded-3xl"
+          onClick={() => setCount(count + 1)}
+        >
+          Increase Count
+        </button>
+        <p className="mt-8 font-bold">You clicked {count} times</p>
+
+        <button
+          className="p-4 m-4 bg-black text-white font-bold rounded-3xl"
           onClick={() => setName(name === "Surya" ? "React Learner" : "Surya")}
         >
           Toggle Name
         </button>
+        <p className="mt-8 font-bold">Current name: {name}</p>
       </div>
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
+            className="border border-solid border-black"
             type="text"
             placeholder="Search"
             value={searchText}
@@ -52,7 +59,7 @@ const AppBody = () => {
             }}
           />
           <button
-            className="filter-btn"
+            className="px-4 py-2 bg-amber-900 m-4 font-bold text-white rounded-2xl"
             onClick={() => {
               const filteredList = restaurantList.filter((res) =>
                 res.info.name
@@ -65,19 +72,21 @@ const AppBody = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const topList = restaurantList.filter(
-              (res) => res.info.avgRating > 4.6
-            );
-            setFilteredRestaurant(topList);
-          }}
-        >
-          Top Rated Restarunts
-        </button>
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-blue-300 font-bold text-white rounded-2xl"
+            onClick={() => {
+              const topList = restaurantList.filter(
+                (res) => res.info.avgRating > 4.6
+              );
+              setFilteredRestaurant(topList);
+            }}
+          >
+            Top Rated Restarunts
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filteredRestaurant.map((restarunt) => (
           <Link
             to={"/restaurants/" + restarunt.info.id}
